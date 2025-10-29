@@ -39,3 +39,7 @@ function seven(a)
         if (minutes == 60) { hour++; minutes = 0 }
         alert("YOUR TIME: "+a[0]+":"+a[1]+":"+a[2]+"\nFOR NEW DAY: "+hour+":"+minutes+":"+seconds)
 }
+function eight(a)
+{
+        alert(Math.trunc((a % 100) / 10))
+}
