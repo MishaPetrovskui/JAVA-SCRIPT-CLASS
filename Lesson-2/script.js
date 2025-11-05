@@ -67,4 +67,33 @@ function three(a)
     }
     alert(`Доданні: ${dodatni}\nВід'ємні: ${vidjemni}\nНулі: ${nuls}\nПарні: ${parni}\nНепарні: ${neparni}`)
 }
-
+function four()
+{
+    let rand = Number(50)
+    let answer
+    let bottom = Number(0)
+    let top = Number(100)
+    while (true)
+    {
+        answer = prompt("Число: "+Number(rand)+"; Введіть вашу відповідь (>'<', '<', '='):");
+        if (answer === ">")
+        {
+            bottom = Number(rand);
+            rand = Number(Math.floor(Math.random() * (top - bottom + 1)) + bottom);
+        }
+        else if (answer === "<")
+        {
+            top = Number(rand);
+            rand = Number(Math.floor(Math.random() * (top - bottom + 1)) + bottom);
+        }
+        else if (answer === "=")
+        {
+            alert(`Я вгадав ваше число: ${Number(rand)}`);
+            break;
+        }
+        else
+        {
+            alert("Невірний ввід. Спробуйте ще раз.");
+        }
+    }
+}
