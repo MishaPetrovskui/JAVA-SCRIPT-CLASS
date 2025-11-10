@@ -48,3 +48,16 @@ document.querySelector(".secondTask").addEventListener("mousemove", e=>{
     firstNumber.innerHTML = `X = ${e.clientX}`;
     secondNumber.innerHTML = `Y = ${e.clientY}`
 })
+let number = 1;
+document.querySelector(".btn2").addEventListener("click", () =>
+{
+    if (number == 1){
+        text.style.display = "none";
+        number++;
+    }
+    else
+    {
+        text.style.display = "block";
+        number--
+    }
+})
