@@ -6,73 +6,22 @@
     <title>Lesson 5</title>
     <script src="script.js" defer></script>
     <style>
-        .circle {
-            display: inline-block;
+        table {
+            margin: 0;
+            padding: 0;
+        }
+        table td
+        {
             width: 100px;
             height: 100px;
-            background-color:gray;
-            border-radius: 50%;
-            border: 1px solid gray;
-            margin: 2px;
-        }
-        #traffic {
-            display: inline-block;
-            width: 80vh;
-            text-align: center;
-            border: 4px solid black;
-            background-color: rgb(44, 44, 44);
-        }
-        button 
-        {
-            display: inline-block;
-            width: auto;
-            height: auto;
-        }
-        .circle1.active
-        {
-            transition-duration: 500ms;
-            background-color: green;
-        }
-        .circle2.active
-        {
-            transition-duration: 500ms;
-            background-color: yellow;
-        }
-        .circle3.active
-        {
-            transition-duration: 500ms;
-            background-color: red;
-        }
-        .gradient-button {
-            text-decoration: none;
-            display: inline-block;
-            color: white;
-            padding: 20px 30px;
-            margin: 10px 20px;
-            border-radius: 10px;
-            font-family: 'Montserrat', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            background-image: linear-gradient(to right, #9EEFE1 0%, #4830F0 51%, #9EEFE1 100%);
-            background-size: 200% auto;
-            box-shadow: 0 0 20px rgba(0, 0, 0, .1);
-            transition: .5s;
-            }
-        .gradient-button:hover {
-            background-position: right center;
+            border: 1px solid black;
         }
     </style>
 </head>
 <body>
-    <header>
-        <div id="traffic">
-            <div class="circle1 circle"></div>
-            <div class="circle2 circle"></div>
-            <div class="circle3 circle"></div>
-        </div>
-        <button class="gradient-button">
-            NEXT
-        </button>
-    </header>    
+    <table>
+        <tr>1</tr>
+        <tr>2</tr>
+    </table>
 </body>
 </html>
