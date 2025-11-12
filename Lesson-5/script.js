@@ -1,31 +1,25 @@
-let active = 1;
-document.querySelector("button").addEventListener("click", ()=>{
-    let activeted = document.querySelector("#traffic").getElementsByClassName("circle")[active-1]
-    let remove = document.querySelector("#traffic").getElementsByClassName("circle")[active-2]
-    active++
-    if (active == 1)
+let days = new Array(); days = [ "MON", "TUE", "WED", "THU", "FRI", "SUT", "SUN"]
+document.addEventListener("DOMContentLoaded", ()=>
+{
+    let table = document.querySelector("table")
+    let curentRow = 0
+    let curentCol = 0
+    let row = null
+    curentCol = 0
+    curentRow = 0;
+    for (let j = 0;j<35;j++)
     {
-        activeted.classList.add("active")
-        remove.classList.remove("active")
-    }
-    else if (active == 2)
-    {
-        activeted.classList.add("active")
-        remove.classList.remove("active")
-    }
-    else if (active == 3)
-    {
-        activeted.classList.add("active")
-        remove.classList.remove("active")
-    }
-    else if (active == 4) 
-    {
-        activeted.classList.add("active")
-        remove.classList.remove("active")
-    }
-    else
-    {
-        remove.classList.remove("active")
-        active = 1
+        if (curentCol == 0)
+        {
+            row = document.createElement("tr")
+            table.append(row)
+        }
+        row.append(document.createElement("td"))
+        curentCol++;
+        if (curentCol >= 7)
+        {
+            curentCol = 0
+            curentRow++;
+        }
     }
 })
