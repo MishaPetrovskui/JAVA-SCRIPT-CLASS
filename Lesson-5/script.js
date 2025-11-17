@@ -1,25 +1,29 @@
-let days = new Array(); days = [ "MON", "TUE", "WED", "THU", "FRI", "SUT", "SUN"]
-document.addEventListener("DOMContentLoaded", ()=>
-{
-    let table = document.querySelector("table")
-    let curentRow = 0
-    let curentCol = 0
-    let row = null
-    curentCol = 0
-    curentRow = 0;
-    for (let j = 0;j<35;j++)
-    {
-        if (curentCol == 0)
-        {
-            row = document.createElement("tr")
-            table.append(row)
+document.getElementById("generate").addEventListener("click", function() {
+    const year = document.getElementById("year").value;
+    const month = document.getElementById("month").value;
+    generateCalendar(year, month);
+});
+
+function generateCalendar(year, month) {
+    const table = document.querySelector("table");
+    table.innerHTML = "";
+    const firstDay = new Date(year, month - 1, 1).getDay();
+    const daysInMonth = new Date(year, month, 0).getDate();
+    let date = 1;
+    for (let i = 0; i < 5; i++) {
+        const row = document.createElement("tr");
+        for (let j = 0; j < 7; j++) {
+            const cell = document.createElement("td");
+            if (i === 0 && j < firstDay) {
+                cell.textContent = "";
+            } else if (date > daysInMonth) {
+                cell.textContent = "";
+            } else {
+                cell.textContent = date++;
+            }
+            row.appendChild(cell);
         }
-        row.append(document.createElement("td"))
-        curentCol++;
-        if (curentCol >= 7)
-        {
-            curentCol = 0
-            curentRow++;
-        }
+        table.appendChild(row);
     }
-})
+}
+
