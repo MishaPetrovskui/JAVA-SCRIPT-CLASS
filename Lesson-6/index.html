@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 5</title>
+    <script src="script.js" defer></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        .colorSelect {
+            margin-bottom: 20px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        header {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        input {
+            width: 60px;
+            padding: 5px;
+            font-size: 16px;
+        }
+        button .add-color {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+        }
+        article {
+            height: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .hex-input {
+            padding: 5px;
+            font-size: 16px;
+            margin-left: 10px;
+        }
+        button.colorSelect {
+            display: inline-block;
+            font-size: 16px;
+            padding: 10px 15px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="input-group">
+            <span>R</span>
+            <input type="number" id="RInput" />
+        </div>
+        <div class="input-group">
+            <span>G</span>
+            <input type="number" id="GInput" />
+        </div>
+        <div class="input-group">
+            <span>B</span>
+            <input type="number" id="BInput" />
+        </div>
+        <button class="add-color">Add color</button>
+    </header>
+    <input type="color" class="hexInput" placeholder="Enter hex code" class="hex-input"/>
+    <section>
+        <article>
+            <div class="color-display" style="width: 200px; height: 200px; background-color: rgb(165,42,42); margin-bottom: 20px;"></div>
+            <div class="color-info">
+                <p>R: <span id="RValue">165</span></p>
+                <p>G: <span id="GValue">42</span></p>
+                <p>B: <span id="BValue">42</span></p>
+            </div>
+        </article>
+        <article>
+            <div class="color-display" style="width: 200px; height: 200px; background-color: rgb(138,43,226); margin-bottom: 20px;"></div>
+            <div class="color-info">
+                <p>R: <span id="RValue">138</span></p>
+                <p>G: <span id="GValue">43</span></p>
+                <p>B: <span id="BValue">226</span></p>
+            </div>
+        </article>
+        <article>
+            <div class="color-display" style="width: 200px; height: 200px; background-color: rgb(0,139,139); margin-bottom: 20px;"></div>
+            <div class="color-info">
+                <p>R: <span id="RValue">0</span></p>
+                <p>G: <span id="GValue">139</span></p>
+                <p>B: <span id="BValue">139</span></p>
+            </div>
+        </article>
+        <article>
+            <div class="color-display" style="width: 200px; height: 200px; background-color: rgb(100,149,237); margin-bottom: 20px;"></div>
+            <div class="color-info">
+                <p>R: <span id="RValue">100</span></p>
+                <p>G: <span id="GValue">149</span></p>
+                <p>B: <span id="BValue">237</span></p>
+            </div>
+        </article>
+        <article>
+            <div class="color-display" style="width: 200px; height: 200px; background-color: rgb(210,105,30); margin-bottom: 20px;"></div>
+            <div class="color-info">
+                <p>R: <span id="RValue">210</span></p>
+                <p>G: <span id="GValue">105</span></p>
+                <p>B: <span id="BValue">30</span></p>
+            </div>
+        </article>
+        <article>
+            <div class="color-display" style="width: 200px; height: 200px; background-color: rgb(0,206,209); margin-bottom: 20px;"></div>
+            <div class="color-info">
+                <p>R: <span id="RValue">0</span></p>
+                <p>G: <span id="GValue">206</span></p>
+                <p>B: <span id="BValue">209</span></p>
+            </div>
+        </article>
+    </section>
+</body>
+</html>
