@@ -13,14 +13,10 @@
         button {
             display: block;
         }
-        input.IPpassword
-        {
-            display: block;
-        }
     </style>
 </head>
 <body>
-    <form class="task" action="" method="get">
+    <!-- <form class="task" action="" method="get">
         <p>Your login:</p>
         <input type="text" class="IPlogin">
         <p>Your password:</p>
@@ -33,6 +29,24 @@
     <div class="overSite">
         <p class="InSiteP"></p>
         <button class="SignOut">Sign Out</button>
+    </div> -->
+    <div>
+        <p>All questions:</p>
+        <hr>
+        <p>Add new question:</p>
+        <form class="task" action="" method="get">
+            <span>Question:</span>
+            <input type="text" class="questionText">
+            <br>
+            <span>Correct answer</span>
+            <input type="text" class="CorrectAnswerText">
+            <br>
+            <span>Wrong answer</span>
+            <input type="text" class="WrongAnswerText">
+            <button>Add</button>
+        </form>
+    </div>
+    <div class="question">
     </div>
 </body>
 </html>
