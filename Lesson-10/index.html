@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 10</title>
+    <script src="script.js" defer></script>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+        }
+        .filmName {
+            display: inline-block;
+            text-align: center;
+            color: white;
+        }
+        .filmPoster {
+            display: inline-block;
+        }
+        .image {
+            height: 200px;
+        }
+        img {
+            height: 500px;
+        }
+        .TextInfo {
+            display: inline-block;
+            width: 50%;
+        }
+        .NowFilm {
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+    <h1>THE MARVELS</h1>
+    <div class="NowFilm">
+        <div class="image">
+            <img src="" alt="poster" class="filmPoster">
+        </div>
+        <div class="TextInfo">
+            <h1 class="filmName"></h1>
+            <hr>
+            <p class="overview"></p>
+            <p class="releaseDate"></p>
+            <p class="productionType"></p>
+        </div>
+    </div>
+    <h1>Following production</h1>
+    <div class="NowFilm">
+        <div class="image">
+            <img src="" alt="poster" class="nextFilmPoster">
+        </div>
+        <div class="TextInfo">
+            <h1 class="nextFilmName"></h1>
+            <p class="nextReleaseDate"></p>
+        </div>
+    </div>
+</body>
+</html>
