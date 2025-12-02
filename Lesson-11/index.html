@@ -6,19 +6,124 @@
     <title>Lesson 10</title>
     <script src="script.js" defer></script>
     <style>
-        p {
-            border-left: 5px solid #4CAF50;
-            background-color: #e8f5e9;
-            padding: 15px 20px;
-            margin: 20px 0;
+        body.minecraft-ui {
+            background-color: #333;
+            color: white;
+            font-family: 'Pixelify Sans', monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .menu-window {
+            background-color: #8b8b8b;
+            border: 3px solid #333;
+            padding: 20px;
+            border-radius: 6px;
+            box-shadow: 
+                inset -4px -4px 0px #3c3c3c,
+                inset 4px 4px 0px #ffffff;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        .menu-window h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #fff;
+            text-shadow: 2px 2px 0px #000;
+        }
+        form {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .IpServer, .AddServer {
+            padding: 10px;
+            border: 2px solid #3c3c3c;
+            background-color: #ddd;
+            font-family: inherit;
+            box-shadow: 
+                inset -2px -2px 0px #888, 
+                inset 2px 2px 0px #fff;
+            border-radius: 3px;
+        }
+
+        .IpServer {
+            flex-grow: 1;
+            color: #000;
+        }
+
+        .AddServer {
+            background-color: #a0a0a0;
+            cursor: pointer;
+        }
+
+        .AddServer:hover {
+            background-color: #bbb;
+        }
+
+        .Servers {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        article 
+        {
+            background-color: #535353;
+            display: flex;
+            padding: 10px;
             border-radius: 4px;
-            font-style: italic;
+            border: 2px solid #3c3c3c;
+            box-shadow: 
+                inset -2px -2px 0px #333, 
+                inset 2px 2px 0px #777;
+            transition: background-color 0.2s;
+        }
+
+        article:hover {
+            background-color: #6a6a6a;
+        }
+
+        article img {
+            width: 48px;
+            height: 48px;
+            margin-right: 10px;
+            image-rendering: pixelated; 
+            border: 1px solid #333;
+        }
+
+        article h3.IP {
+            margin: 0;
+            color: #fff;
+            text-shadow: 1px 1px 0px #000;
+        }
+
+        article span.MotD {
+            display: block;
+            color: #aaa;
+            font-size: 0.9em;
         }
     </style>
 </head>
 <body>
-    <div class="arrayOfFacts">
-
-    </div>
+    <form action="">
+        <input type="text" class="IpServer" placeholder="IP">
+        <button class="AddServer">Add server</button>
+    </form>
+    <section class="Servers">
+        <template>
+            <article>
+                <img src="">
+                <div>
+                    <h3 class="IP"></h3>
+                    <span class="MotD"></span>
+                </div>
+            </article>
+        </template>
+    </section>
 </body>
 </html>

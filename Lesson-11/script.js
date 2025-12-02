@@ -1,22 +1,20 @@
 document.addEventListener("DOMContentLoaded", () => {
-    let id = 1
-    let firstId = 1
-    let interval = setInterval(()=>{
-        fetch('https://meowfacts.herokuapp.com/?count=3&lang=rus').then(response => response.json()).then(meowFact => {
-            let text = document.createElement("p")
-            text.innerText = `${id++}. ${meowFact.data}`
-            text.classList.add(`mf${id}`)
-            document.querySelector(`.arrayOfFacts`).prepend(text)
+    document.querySelector("form").addEventListener("submit", (event) => {
+        event.preventDefault()
+        fetch(`https://api.mcsrvstat.us/3/${document.querySelector(".IpServer").value}`).then(response => response.json()).then(server => {
+            console.log(document.querySelector(".IpServer").value)
+            console.log(server)
+            let template = document.querySelector("section.Servers>template")
+            let serverBlock = template.content.cloneNode(true)
+            serverBlock.querySelector("img").src = server.icon
+            serverBlock.querySelector("h3").innerText = server.ip
+            serverBlock.querySelector("span").innerHTML = server.motd.html
+
+            document.querySelector("section.Servers").prepend(serverBlock)
 
         });
-        
-        while (document.querySelector(".arrayOfFacts").children.length > 5)
-        {
-            document.querySelector(`.arrayOfFacts`).lastChild.remove()
-            console.log(document.querySelector(`.arrayOfFacts`).lastChild)
-            console.log(document.querySelector(".arrayOfFacts").children.length)
-        }
-    }, 1000)
 
-    
+        
+        
+    })
 })
