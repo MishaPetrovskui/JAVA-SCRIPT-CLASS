@@ -1,67 +1,80 @@
-function buyProduct(price) {
-    let cartCookie = getCookie("cart")
-    if(cartCookie === undefined)
+async function createNewDeck() {
+    return fetch("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1")
+    .then(response => response.json())
+}
+
+async function getDeck() {
+    let deck = localStorage.getItem("deck")
+    if(deck === null)
     {
-        let cart = {
-            products: []
-        }
-        cartCookie = JSON.stringify(cart)
-        setCookie("cart", cartCookie, {
-            "max-age": 86000
-        })
+        deck = await createNewDeck()
+        localStorage.setItem("deck", 
+            JSON.stringify(deck))
     }
-    let cart = JSON.parse(cartCookie)
-    if(cart.products === null || 
-        cart.products === undefined
-    ) 
-        cart.products = []
-    cart.products.push(price)
-    setCookie("cart", JSON.stringify(cart), {
-        "max-age": 86000
-    })
+    else deck = JSON.parse(deck)
+    return deck
 }
 
-function getCartTotal() {
-    let cart = JSON.parse(getCookie("cart") || "{}")
-    if(cart.products === null || 
-        cart.products === undefined
-    ) 
-        return 0
-    let total = 0
-    cart.products.forEach(product => {
-        total += product
-    });
-    return total
+async function drawCards(deck, count=1) {
+    let response = 
+    await fetch(`https://deckofcardsapi.com/api/deck/${deck.deck_id}/draw/?count=${count}`)
+    response = await response.json()
+    return response.cards
 }
 
-function refreshCartTotal() {
-    document.querySelector(".cart-total span")
-        .innerText = `${getCartTotal()} грн`
-}
-
-let previousCartTotal = 0
-
-function checkCartUpdates() {
-    let currentCartTotal = getCartTotal()
-    
-    if(currentCartTotal !== previousCartTotal) {
-        refreshCartTotal()
-        previousCartTotal = currentCartTotal
-    }
+async function shuffleDeck(deck) {
+    return await fetch(`https://deckofcardsapi.com/api/deck/${deck.deck_id}/shuffle/`)
 }
 
 document.addEventListener("DOMContentLoaded", ()=>{
-    previousCartTotal = getCartTotal()
-    refreshCartTotal()
+    let drawButton = document.getElementById("drawCard");
+    let cardsContainer = document.querySelector(".cards");
+    let currentDeck = null;
+    getDeck()
+    .then(deck => {
+        currentDeck = deck;
+        console.log(deck);
+        return shuffleDeck(deck);
+    })
+    .then(() => {
+        console.log("Колода перемішана");
+    })
+    .catch(error => {
+        console.error("Помилка ініціалізації колоди:", error);
+    });
+    drawButton.addEventListener("click", async () => {
+        if (!currentDeck) {
+            console.error("Колода ще не готова");
+            return;
+        }
 
-    setInterval(() => {
-        checkCartUpdates()
-    }, 500)
+        drawButton.disabled = true;
+        drawButton.textContent = "Витягуємо...";
 
-    document.querySelector("button")
-        .addEventListener("click", (event) => {
-            buyProduct(100)
-            refreshCartTotal()
-            previousCartTotal = getCartTotal()
-        })
+        let cards = await drawCards(currentDeck, 1);
+        
+        if (cards && cards.length > 0) {
+            let card = cards[0];
+            
+            let cardElement = document.createElement("div");
+            cardElement.className = "card";
+            cardElement.innerHTML = `
+                <img src="${card.image}"">
+                <p>${card.value} of ${card.suit}</p>
+            `;
+            
+            cardsContainer.appendChild(cardElement);
+            
+            console.log("Витягнута карта:", card);
+        } 
+        else {
+            alert("Карти в колоді закінчилися!");
+            currentDeck = await createNewDeck();
+            localStorage.setItem("deck", JSON.stringify(currentDeck));
+            await shuffleDeck(currentDeck);
+        }
+        
+        drawButton.disabled = false;
+        drawButton.textContent = "Витягнути карту";
+    });
 })

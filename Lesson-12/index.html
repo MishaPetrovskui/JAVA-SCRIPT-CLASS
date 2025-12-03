@@ -6,34 +6,128 @@
     <script src="cookies.js"></script>
     <script src="script.js"></script>
     <style>
-        body {
-            padding: 0;
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        header {
-            padding: 20px;
-            background-color: #d2d2d2;
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('https://img.freepik.com/free-vector/pixel-rain-abstract-background_23-2148370435.jpg?semt=ais_hybrid&w=740&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            min-height: 100vh;
             display: flex;
-            justify-content: flex-end;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
         }
-        header span {
-            font-weight: bold;
-            font-size: 30px;
-        }
+
         main {
-            padding: 20px 10px;
+            width: 100%;
+            max-width: 1200px;
+            text-align: center;
+        }
+
+        h1 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        #drawCard {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border: none;
+            color: white;
+            padding: 15px 40px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            margin-bottom: 40px;
+        }
+
+        #drawCard:hover:not(:disabled) {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        #drawCard:active:not(:disabled) {
+            transform: translateY(-1px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        #drawCard:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            animation: cardAppear 0.5s ease;
+        }
+
+        @keyframes cardAppear {
+            from {
+                opacity: 0;
+                transform: scale(0.5) rotateY(180deg);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) rotateY(0deg);
+            }
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .card img {
+            width: 150px;
+            height: auto;
+            border-radius: 10px;
+            display: block;
+        }
+
+        .card p {
+            margin-top: 15px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            text-transform: capitalize;
+        }
+
+        .loading {
+            color: white;
+            font-size: 18px;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
-   <header>
-        <div class="cart-total">
-            <span>0 грн</span>
-        </div>
-   </header>
-
    <main>
-        <button>Купити</button>
+        <h1>Гра в карти</h1>
+        <button id="drawCard">Витягнути карту</button>
+        <div class="cards"></div>
    </main>
 </body>
 </html>
